@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación de Crédito Bancario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, input, button {
+            margin-top: 10px;
+            display: block;
+            
+        }
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        h1 {
+            background-color: aquamarine;
+            margin-top: 50px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        p{
+            text-align: center;
+        }
+        
+    </style>
+    <script>
+        function verificarCredito() {
+            var edad = parseInt(document.getElementById('edad').value);
+            var salario = parseFloat(document.getElementById('salario').value);
+    
+            if (edad > 25 && salario > 3000) {
+                document.getElementById('resultado').innerText = "Puedes aplicar a un crédito bancario.";
+            } else {
+                document.getElementById('resultado').innerText = "No cumples con los requisitos para aplicar a un crédito bancario.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Verificación de Crédito Bancario</h1>
+    <p>Ingresa tu edad y salario mensual para verificar si puedes aplicar a un crédito bancario.</p>
+    
+    <form onsubmit="event.preventDefault(); verificarCredito();">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" required>
+        
+        <label for="salario">Salario mensual:</label>
+        <input type="number" id="salario" step="0.01" required>
+        
+        <button type="submit">Verificar</button>
+    </form>
+    
+    <p id="resultado"></p>
+</body>
+</html>

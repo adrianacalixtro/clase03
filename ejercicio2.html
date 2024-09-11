@@ -1,0 +1,76 @@
+<html lang="es"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divisibilidad y Números Divisibles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, input, button {
+            margin-top: 10px;
+            display: block;
+        }
+        #resultado, #numeros-divisibles {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        #numeros-divisibles ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        h1{
+            text-align: center;
+            background-color: #c2c2b7;
+        }
+    </style>
+    <script>
+        function procesarNumero() {
+            // Obtener el número ingresado por el usuario
+            var numero = parseInt(document.getElementById('numero').value);
+            
+            // Variables para los mensajes de salida
+            var mensajeDivisibilidad = '';
+            var listaDivisibles = '';
+            
+            // Verificar la divisibilidad del número
+            if (numero % 3 === 0 && numero % 5 === 0) {
+                mensajeDivisibilidad = "El número es divisible entre 3 y 5.";
+            } else if (numero % 3 === 0) {
+                mensajeDivisibilidad = "El número es divisible entre 3.";
+            } else if (numero % 5 === 0) {
+                mensajeDivisibilidad = "El número es divisible entre 5.";
+            } else {
+                mensajeDivisibilidad = "El número no es divisible ni entre 3 ni entre 5.";
+            }
+
+            // Construir la lista de números divisibles entre 3 o 5
+            listaDivisibles = '<ul>';
+            for (var i = 1; i <= numero; i++) {
+                if (i % 3 === 0 || i % 5 === 0) {
+                    listaDivisibles += '<li>' + i + '</li>';
+                }
+            }
+            listaDivisibles += '</ul>';
+            
+            // Mostrar los resultados
+            document.getElementById('resultado').innerText = mensajeDivisibilidad;
+            document.getElementById('numeros-divisibles').innerHTML = listaDivisibles;
+        }
+    </script>
+</head>
+<body>
+    <h1>Divisibilidad y Números Divisibles</h1>
+    <p>Ingresa un número para verificar su divisibilidad y ver los números divisibles entre 3 o 5 en el rango de 1 al número ingresado.</p>
+    
+    <form onsubmit="event.preventDefault(); procesarNumero();">
+        <label for="numero">Número:</label>
+        <input type="number" id="numero" required>
+        <button type="submit">Procesar</button>
+    </form>
+    
+    <p id="resultado"></p>
+    <div id="numeros-divisibles"></div>
+</body>
+</html>
